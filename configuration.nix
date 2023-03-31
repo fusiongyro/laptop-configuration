@@ -140,10 +140,19 @@
     programs.helix = {
       enable = true;
       settings.keys.normal = {
-        "C-n" = "move_line_down";
-        "C-p" = "move_line_up";
-        "C-f" = "move_char_right";
-        "C-b" = "move_char_left";
+        "A-v" = "page_up"
+        "C-b" = "move_char_left"
+        "C-f" = "move_char_right"
+        "C-n" = "move_line_down"
+        "C-p" = "move_line_up"
+        "C-v" = "page_down"
+      }; 
+      
+      settings.keys.select = {
+        "C-b" = "extend_char_left"
+        "C-f" = "extend_char_right"
+        "C-n" = "extend_line_down"
+        "C-p" = "extend_line_up"
       };
     };
     
