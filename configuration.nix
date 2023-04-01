@@ -93,7 +93,7 @@
     isNormalUser = true;
     shell = pkgs.fish;
     description = "Daniel Lyons";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd"];
     packages = with pkgs; [
       firefox
       bitwig-studio
@@ -140,19 +140,19 @@
     programs.helix = {
       enable = true;
       settings.keys.normal = {
-        "A-v" = "page_up"
-        "C-b" = "move_char_left"
-        "C-f" = "move_char_right"
-        "C-n" = "move_line_down"
-        "C-p" = "move_line_up"
-        "C-v" = "page_down"
+        "A-v" = "page_up";
+        "C-b" = "move_char_left";
+        "C-f" = "move_char_right";
+        "C-n" = "move_line_down";
+        "C-p" = "move_line_up";
+        "C-v" = "page_down";
       }; 
       
       settings.keys.select = {
-        "C-b" = "extend_char_left"
-        "C-f" = "extend_char_right"
-        "C-n" = "extend_line_down"
-        "C-p" = "extend_line_up"
+        "C-b" = "extend_char_left";
+        "C-f" = "extend_char_right";
+        "C-n" = "extend_line_down";
+        "C-p" = "extend_line_up";
       };
     };
     
