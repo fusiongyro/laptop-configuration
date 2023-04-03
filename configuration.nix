@@ -61,9 +61,9 @@
     xkbVariant = "dvorak";
     xkbOptions = "ctrl:swapcaps";
   };
+  console.useXkbConfig = true;
 
   # Configure console keymap
-  console.keyMap = "dvorak";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -114,7 +114,7 @@
   };
     
   home-manager.users.dlyons = { pkgs, ... }: {
-    home.stateVersion = "22.11";
+    home.stateVersion = "23.05";
     
     # Fish configuration: remove the greeting
     programs.fish.enable = true;
@@ -162,7 +162,7 @@
     # Syncthing and Dropbox
     services.syncthing.enable = true;
     # services.dropbox.enable = true;
-    
+
     # Exa and Bat
     programs.exa.enable = true;
     programs.bat.enable = true;
@@ -223,6 +223,13 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+  
+  # Needed to configure enable the other fish shell integrations
+  programs.fish.enable = true;
+
+  # Virtualization
+  virtualisation.libvirtd.enable = true;
+  programs.dconf.enable = true;
 
   # List services that you want to enable:
 
