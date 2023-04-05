@@ -92,7 +92,8 @@
     packages = with pkgs; [
       firefox
       bitwig-studio
-      # jetbrains.idea-ultimate
+      jetbrains.idea-ultimate
+      element-desktop
       tdesktop
       signal-desktop
       zoom-us

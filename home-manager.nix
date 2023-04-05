@@ -41,6 +41,10 @@
         "C-p" = "extend_line_up";
       };
     };
+
+    home.sessionVariables = {
+      EDITOR = "hx";
+    };
     
     # NNN, a simple file manager.
     programs.nnn.enable = true;
