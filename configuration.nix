@@ -7,7 +7,6 @@
 {
   imports =
     [ 
-      <home-manager/nixos>
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
@@ -22,10 +21,6 @@
 
   networking.hostName = "shevchenko"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -63,8 +58,6 @@
   };
   console.useXkbConfig = true;
 
-  # Configure console keymap
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -88,6 +81,8 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  security.sudo.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.dlyons = {
     isNormalUser = true;
@@ -97,7 +92,7 @@
     packages = with pkgs; [
       firefox
       bitwig-studio
-      jetbrains.idea-ultimate
+      # jetbrains.idea-ultimate
       tdesktop
       signal-desktop
       zoom-us
@@ -113,97 +108,6 @@
     polkitPolicyOwners = ["dlyons"];
   };
     
-  home-manager.users.dlyons = { pkgs, ... }: {
-    home.stateVersion = "23.05";
-    
-    # Fish configuration: remove the greeting
-    programs.fish.enable = true;
-    programs.fish.shellInit = "set -g fish_greeting";
-    
-    # Starship. Make sure it hooks up to Fish
-    programs.starship = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-    
-    # Kitty
-    programs.kitty = {
-      enable = true;
-      settings = {
-        # shell = "fish";
-        font_family = "PragmataPro";
-        font_size = 14;
-      };
-    };
-    
-    # Helix. Add my keybindings.
-    programs.helix = {
-      enable = true;
-      settings.keys.normal = {
-        "A-v" = "page_up";
-        "C-b" = "move_char_left";
-        "C-f" = "move_char_right";
-        "C-n" = "move_line_down";
-        "C-p" = "move_line_up";
-        "C-v" = "page_down";
-      }; 
-      
-      settings.keys.select = {
-        "C-b" = "extend_char_left";
-        "C-f" = "extend_char_right";
-        "C-n" = "extend_line_down";
-        "C-p" = "extend_line_up";
-      };
-    };
-    
-    # NNN, a simple file manager.
-    programs.nnn.enable = true;
-    
-    # Syncthing and Dropbox
-    services.syncthing.enable = true;
-    # services.dropbox.enable = true;
-
-    # Exa and Bat
-    programs.exa.enable = true;
-    programs.bat.enable = true;
-    
-    # Bat shell alias
-    home.shellAliases = {
-      cat = "bat";
-      ls = "exa";
-    };
-    
-    # My mail signature
-    home.file.".signature".text = ''
-    --
-    Daniel K Lyons
-    fusion@storytotell.org
-    '';
-    
-    # My SSH configuration
-    home.file.".ssh/config".text = ''
-    Host *
-      IdentityAgent ~/.1password/agent.sock
-      ControlMaster auto
-      ControlPath ~/.ssh/master-%r@%h:%p
-
-    Host 7gf.org csv5.clanspum.net
-      User fusion
-    '';
-    
-    # A few Gnome settings
-    dconf.settings = {
-      "org/gnome/desktop/interface" = {
-        clock-format = "12h";
-      };
-      
-      "org/gnome/settings-daemon/plugins/color" = {
-        night-light-enabled = true;
-        night-light-temperature = 4500;
-      };
-    };
-  };
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
