@@ -99,6 +99,7 @@
       zoom-us
       dropbox
       syncthing
+      yabridge
     ];
   };
   
@@ -119,6 +120,7 @@
     restic
     virt-manager
     git
+    file
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
