@@ -56,6 +56,10 @@
     # Exa and Bat
     programs.exa.enable = true;
     programs.bat.enable = true;
+
+    # Direnv
+    programs.direnv.enable = true;
+    programs.direnv.nix-direnv.enable = true;
     
     # Bat shell alias
     home.shellAliases = {
