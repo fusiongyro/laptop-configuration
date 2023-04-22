@@ -16,14 +16,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
-  # Mount the old partition, while we still have it
-  # fileSystems."/old".device = "/dev/nvme0n1p3";
-
-  networking.hostName = "shevchenko"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.hostName = "shevchenko";
 
   # Set your time zone.
   time.timeZone = "America/Denver";
@@ -88,7 +83,7 @@
     isNormalUser = true;
     shell = pkgs.fish;
     description = "Daniel Lyons";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd"];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" "input"];
     packages = with pkgs; [
       firefox
       bitwig-studio
