@@ -95,6 +95,7 @@
       dropbox
       syncthing
       yabridge
+      gnome.gnome-tweaks
     ];
   };
   

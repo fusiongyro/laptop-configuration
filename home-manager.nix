@@ -86,6 +86,12 @@
     '';
     
     # A few Gnome settings
+    gtk.enable = true;
+    gtk.theme = {
+      package = pkgs.gnome.gnome-themes-extra;
+      name = "Adwaita-dark";
+    };
+
     dconf.settings = {
       "org/gnome/desktop/interface" = {
         clock-format = "12h";
