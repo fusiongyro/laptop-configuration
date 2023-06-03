@@ -119,6 +119,11 @@
     file
   ];
 
+  # auto-backup stuff
+  services.udev.extraRules = ''
+    SUBSYSTEM=="block", ACTION=="add", ATTRS{idVendor}=="090c", RUN+="${pkgs.util-linux}/bin/logger hello"
+  '';
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
