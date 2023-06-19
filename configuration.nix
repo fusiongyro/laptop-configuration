@@ -96,6 +96,7 @@
       syncthing
       yabridge
       gnome.gnome-tweaks
+      wl-clipboard
     ];
   };
   
