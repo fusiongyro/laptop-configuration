@@ -97,6 +97,8 @@
       yabridge
       gnome.gnome-tweaks
       wl-clipboard
+      obsidian
+      discord
     ];
   };
   
