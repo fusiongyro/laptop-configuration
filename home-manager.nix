@@ -76,6 +76,11 @@
     
     # My SSH configuration
     home.file.".ssh/config".text = ''
+    Host github.com
+      User git
+      IdentityFile ~/.ssh/id_ed25519.pub
+      IdentitiesOnly yes
+
     Host *
       IdentityAgent ~/.1password/agent.sock
       ControlMaster auto
