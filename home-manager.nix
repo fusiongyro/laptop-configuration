@@ -1,6 +1,6 @@
 {
   home-manager.users.dlyons = { pkgs, ... }: {
-    home.stateVersion = "23.05";
+    home.stateVersion = "23.11";
     
     # Fish configuration: remove the greeting
     programs.fish.enable = true;
@@ -54,7 +54,7 @@
     # services.dropbox.enable = true;
 
     # Exa and Bat
-    programs.exa.enable = true;
+    programs.eza.enable = true;
     programs.bat.enable = true;
 
     # Direnv
@@ -64,7 +64,7 @@
     # Bat shell alias
     home.shellAliases = {
       cat = "bat";
-      ls = "exa";
+      ls = "eza";
     };
     
     # My mail signature

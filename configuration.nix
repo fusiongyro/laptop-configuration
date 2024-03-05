@@ -99,6 +99,7 @@
       wl-clipboard
       obsidian
       discord
+      wine
     ];
   };
   
