@@ -96,6 +96,7 @@
       syncthing
       yabridge
       gnome.gnome-tweaks
+      gnomeExtensions.appindicator
       wl-clipboard
       obsidian
       discord
