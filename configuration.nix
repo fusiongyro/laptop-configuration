@@ -2,7 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ 
+  config, 
+  pkgs, 
+  nixpkgsUnstable,
+  ... 
+}:
 
 {
   imports =
@@ -46,10 +51,10 @@
   services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "dvorak";
-    xkbOptions = "ctrl:swapcaps";
+    variant = "dvorak";
+    options = "ctrl:swapcaps";
   };
   console.useXkbConfig = true;
 
@@ -101,6 +106,7 @@
       obsidian
       discord
       wine
+      nixpkgsUnstable.legacyPackages.${system}.nushell
     ];
   };
   
