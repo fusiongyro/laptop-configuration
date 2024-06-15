@@ -102,11 +102,21 @@
       yabridge
       gnome.gnome-tweaks
       gnomeExtensions.appindicator
+      gnomeExtensions.gsconnect
       wl-clipboard
       obsidian
       discord
       wine
       nixpkgsUnstable.legacyPackages.${system}.nushell
+      python312
+      android-file-transfer
+      mtpfs
+      unzip
+      _7zz
+      transmission-gtk
+      helm
+      emulationstation
+      retroarch
     ];
   };
   
@@ -134,6 +144,9 @@
   services.udev.extraRules = ''
     SUBSYSTEM=="block", ACTION=="add", ATTRS{idVendor}=="090c", RUN+="${pkgs.util-linux}/bin/logger hello"
   '';
+
+  # android
+  services.udev.packages = [ pkgs.android-udev-rules ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
