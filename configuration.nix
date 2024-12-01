@@ -61,6 +61,9 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # Enable Flatpak for Bitwig
+  services.flatpak.enable = true;
+
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -88,10 +91,9 @@
     isNormalUser = true;
     shell = pkgs.fish;
     description = "Daniel Lyons";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" "input"];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" "input" "docker"];
     packages = with pkgs; [
       firefox
-      bitwig-studio
       jetbrains.idea-ultimate
       element-desktop
       tdesktop
@@ -109,7 +111,6 @@
       wine
       nixpkgsUnstable.legacyPackages.${system}.nushell
       python312
-      android-file-transfer
       mtpfs
       unzip
       _7zz
@@ -129,6 +130,9 @@
     
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "freeimage-unstable-2021-11-01"
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -138,6 +142,8 @@
     virt-manager
     git
     file
+    docker
+    android-file-transfer
   ];
 
   # auto-backup stuff
@@ -162,6 +168,9 @@
   # Virtualization
   virtualisation.libvirtd.enable = true;
   programs.dconf.enable = true;
+
+  # also Docker
+  virtualisation.docker.enable = true;
 
   # List services that you want to enable:
 
