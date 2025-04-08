@@ -52,8 +52,8 @@
 
   # Configure keymap in X11
   services.xserver.xkb = {
-    layout = "us";
-    variant = "dvorak";
+    layout = "us,us";
+    variant = "dvorak,";
     options = "ctrl:swapcaps";
   };
   console.useXkbConfig = true;
@@ -101,13 +101,13 @@
       dropbox
       syncthing
       yabridge
+      yabridgectl
       gnome-tweaks
       gnomeExtensions.appindicator
       gnomeExtensions.gsconnect
       wl-clipboard
       obsidian
       discord
-      wine
       nixpkgsUnstable.legacyPackages.${system}.nushell
       python312
       mtpfs
@@ -117,6 +117,22 @@
       helm
       emulationstation
       retroarch
+    ];
+  };
+
+  users.users.alyons = {
+    isNormalUser = true;
+    shell = pkgs.fish;
+    description = "August Lyons";
+    packages = with pkgs; [
+      firefox
+      zoom-us
+      gnome-tweaks
+      gnomeExtensions.appindicator
+      gnomeExtensions.gsconnect
+      wl-clipboard
+      obsidian
+      unzip
     ];
   };
   
@@ -142,7 +158,10 @@
     git
     file
     docker
+    j
     android-file-transfer
+    wine64
+    wineWow64Packages.full
   ];
 
   # auto-backup stuff
