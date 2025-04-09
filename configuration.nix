@@ -19,11 +19,11 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   # Enable networking
   networking.networkmanager.enable = true;
-  networking.hostName = "shevchenko";
+  networking.hostName = "iverson";
 
   # Set your time zone.
   time.timeZone = "America/Denver";
@@ -52,8 +52,8 @@
 
   # Configure keymap in X11
   services.xserver.xkb = {
-    layout = "us,us";
-    variant = "dvorak,";
+    layout = "us";
+    variant = "dvorak";
     options = "ctrl:swapcaps";
   };
   console.useXkbConfig = true;
@@ -84,6 +84,9 @@
   # services.xserver.libinput.enable = true;
 
   security.sudo.enable = true;
+
+  services.displayManager.autologin.enable = true;
+  services.displayManager.autologin.user = "dlyons";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.dlyons = {
@@ -120,22 +123,6 @@
     ];
   };
 
-  users.users.alyons = {
-    isNormalUser = true;
-    shell = pkgs.fish;
-    description = "August Lyons";
-    packages = with pkgs; [
-      firefox
-      zoom-us
-      gnome-tweaks
-      gnomeExtensions.appindicator
-      gnomeExtensions.gsconnect
-      wl-clipboard
-      obsidian
-      unzip
-    ];
-  };
-  
   # 1password
   programs._1password.enable = true;
   programs._1password-gui = {
@@ -207,5 +194,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.11"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
+
 }

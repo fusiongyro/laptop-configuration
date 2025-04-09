@@ -8,7 +8,7 @@
 
   outputs = { self, nixpkgs, nixpkgsUnstable, home-manager }@attrs: {
     # replace 'joes-desktop' with your hostname here.
-    nixosConfigurations.shevchenko = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.iverson = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = attrs;
       modules = [ 
