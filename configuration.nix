@@ -85,8 +85,14 @@
 
   security.sudo.enable = true;
 
-  services.displayManager.autologin.enable = true;
-  services.displayManager.autologin.user = "dlyons";
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "dlyons";
+
+  # Firmware updates
+  services.fwupd.enable = true;
+
+  # Fingerprint reader
+  services.fprintd.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.dlyons = {
@@ -116,7 +122,7 @@
       mtpfs
       unzip
       _7zz
-      transmission-gtk
+      transmission_4-gtk
       helm
       emulationstation
       retroarch
