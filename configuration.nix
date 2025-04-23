@@ -47,14 +47,23 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # services.displayManager.gdm.enable = true;
+  # services.desktopManager.gnome.enable = true;
+  #
+  # Enable the Budgie environment
+  # services.desktopManager.budgie.enable = true;
+  # services.displayManager.lightdm.enable = true;
+  #
+  # Enable KDE
+  
+  services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
-    layout = "us";
-    variant = "dvorak";
-    options = "ctrl:swapcaps";
+    layout = "us,apl";
+    variant = "dvorak,dyalog";
+    options = "ctrl:swapcaps,grp:switch";
   };
   console.useXkbConfig = true;
 
@@ -101,31 +110,34 @@
     description = "Daniel Lyons";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" "input" "docker"];
     packages = with pkgs; [
-      firefox
-      jetbrains.idea-ultimate
-      element-desktop
-      tdesktop
-      signal-desktop
-      zoom-us
+      _7zz
+      discord
       dropbox
-      syncthing
-      yabridge
-      yabridgectl
-      gnome-tweaks
+      dyalog
+      element-desktop
+      emulationstation
+      firefox
       gnomeExtensions.appindicator
       gnomeExtensions.gsconnect
-      wl-clipboard
-      obsidian
-      discord
-      nixpkgsUnstable.legacyPackages.${system}.nushell
-      python312
-      mtpfs
-      unzip
-      _7zz
-      transmission_4-gtk
+      gnome-tweaks
       helm
-      emulationstation
+      jetbrains.idea-ultimate
+      kmail
+      mtpfs
+      nixpkgsUnstable.legacyPackages.${system}.nushell
+      obsidian
+      python312
       retroarch
+      ride
+      signal-desktop
+      syncthing
+      tdesktop
+      transmission_4-gtk
+      unzip
+      wl-clipboard
+      yabridge
+      yabridgectl
+      zoom-us
     ];
   };
 
@@ -141,6 +153,7 @@
   nixpkgs.config.permittedInsecurePackages = [
     "freeimage-unstable-2021-11-01"
   ];
+  nixpkgs.config.dyalog.acceptLicense = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

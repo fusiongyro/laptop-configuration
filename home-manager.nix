@@ -1,4 +1,5 @@
 {
+  home-manager.backupFileExtension = "backup";
   home-manager.users.dlyons = { pkgs, ... }: {
     home.stateVersion = "23.11";
     
@@ -18,7 +19,7 @@
       settings = {
         # shell = "fish";
         font_family = "PragmataPro";
-        font_size = 14;
+        font_size = 12;
       };
     };
     
