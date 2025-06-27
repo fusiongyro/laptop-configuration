@@ -43,6 +43,9 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  services.avahi.enable = true;
+  services.avahi.nssmdns4 = true;
+
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
@@ -65,7 +68,7 @@
   services.flatpak.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -144,6 +147,7 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
     "freeimage-unstable-2021-11-01"
+    "freeimage-3.18.0-unstable-2024-04-18"
   ];
   nixpkgs.config.dyalog.acceptLicense = true;
 
