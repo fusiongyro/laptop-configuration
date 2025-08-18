@@ -67,6 +67,12 @@
       cat = "bat";
       ls = "eza";
     };
+
+    # Firefox
+    programs.firefox = {
+      enable = true;
+      nativeMessagingHosts = [ pkgs.kdePackages.plasma-browser-integration ];
+    };
     
     # My mail signature
     home.file.".signature".text = ''

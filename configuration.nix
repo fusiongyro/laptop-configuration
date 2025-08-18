@@ -97,6 +97,9 @@
   # Fingerprint reader
   services.fprintd.enable = true;
 
+  # Power
+  services.power-profiles-daemon.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.dlyons = {
     isNormalUser = true;
@@ -110,7 +113,6 @@
       dyalog
       element-desktop
       emulationstation
-      firefox
       gnomeExtensions.appindicator
       gnomeExtensions.gsconnect
       gnome-tweaks
