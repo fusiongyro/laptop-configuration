@@ -6,6 +6,7 @@
   config, 
   pkgs, 
   nixpkgsUnstable,
+  home-manager,
   ... 
 }:
 
@@ -64,9 +65,6 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # Enable Flatpak for Bitwig
-  services.flatpak.enable = true;
-
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -106,36 +104,6 @@
     shell = pkgs.fish;
     description = "Daniel Lyons";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" "input" "docker"];
-    packages = with pkgs; [
-      _7zz
-      discord
-      dropbox
-      dyalog
-      element-desktop
-      emulationstation
-      gnomeExtensions.appindicator
-      gnomeExtensions.gsconnect
-      gnome-tweaks
-      helm
-      jetbrains.idea-ultimate
-      kdePackages.kate
-      mtpfs
-      nixpkgsUnstable.legacyPackages.${system}.nushell
-      obsidian
-      python312
-      retroarch
-      ride
-      signal-desktop
-      syncthing
-      tdesktop
-      thunderbird
-      transmission_4-gtk
-      unzip
-      wl-clipboard
-      yabridge
-      yabridgectl
-      zoom-us
-    ];
   };
 
   # 1password
@@ -150,8 +118,8 @@
   nixpkgs.config.permittedInsecurePackages = [
     "freeimage-unstable-2021-11-01"
     "freeimage-3.18.0-unstable-2024-04-18"
+    "mbedtls-2.28.10"
   ];
-  nixpkgs.config.dyalog.acceptLicense = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -162,16 +130,10 @@
     git
     file
     docker
-    j
     android-file-transfer
     wine64
     wineWow64Packages.full
   ];
-
-  # auto-backup stuff
-  services.udev.extraRules = ''
-    SUBSYSTEM=="block", ACTION=="add", ATTRS{idVendor}=="090c", RUN+="${pkgs.util-linux}/bin/logger hello"
-  '';
 
   # android
   services.udev.packages = [ pkgs.android-udev-rules ];

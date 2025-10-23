@@ -14,10 +14,25 @@
       specialArgs = attrs;
       modules = [ 
         ./configuration.nix
-        home-manager.nixosModules.home-manager
-        ./home-manager.nix 
         nixos-hardware.nixosModules.framework-13-7040-amd
       ];
+    };
+    
+    homeConfigurations."dlyons" = let
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+    in home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+
+      # Specify your home configuration modules here, for example,
+      # the path to your home.nix.
+      modules = [ ./home.nix ];
+
+      # Optionally use extraSpecialArgs
+      # to pass through arguments to home.nix
+      extraSpecialArgs = {
+        inherit nixpkgsUnstable;
+        inherit nixpkgs;
+      };
     };
   };
 }
