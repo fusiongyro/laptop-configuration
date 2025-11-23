@@ -87,10 +87,17 @@
       "C-n" = "extend_line_down";
       "C-p" = "extend_line_up";
     };
+    settings.theme = "rose_pine";
   };
 
   # Kitty
-  programs.kitty.enable = true;
+  programs.kitty = {
+    enable = true;
+    font.name = "Berkeley Mono";
+    font.size = 14;
+    shellIntegration.enableFishIntegration = true;
+    themeFile = "rose-pine";
+  };
 
   programs.nix-index.enable = true;
 
