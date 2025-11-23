@@ -52,8 +52,14 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  # services.displayManager.sddm.enable = true;
+  # services.desktopManager.plasma6.enable = true;
+
+  # Enable GNOME
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.displayManager.gdm.wayland = true;
+  # services.xserver.desktopManager.gnome.enable = true;
+  programs.hyprland.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -135,6 +141,8 @@
     wineWow64Packages.full
   ];
 
+  services.upower.enable = true;
+  
   # android
   services.udev.packages = [ pkgs.android-udev-rules ];
 
@@ -149,9 +157,23 @@
   # Needed to configure enable the other fish shell integrations
   programs.fish.enable = true;
 
+  programs.steam.enable = true;
+
   # Virtualization
   virtualisation.libvirtd.enable = true;
   programs.dconf.enable = true;
+  programs.dconf.profiles.user.databases = [
+    {
+      settings = {
+        "org/gnome/mutter" = {
+          experimental-features = [
+            "scale-monitor-framebuffer"
+            "xwayland-native-scaling"
+          ];
+        };
+      };
+    }
+  ];
 
   # also Docker
   virtualisation.docker.enable = true;

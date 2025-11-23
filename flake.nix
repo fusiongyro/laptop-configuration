@@ -5,9 +5,13 @@
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    stylix = {
+      url = "github:nix-community/stylix/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgsUnstable, home-manager, nixos-hardware }@attrs: {
+  outputs = { self, nixpkgs, nixpkgsUnstable, home-manager, nixos-hardware, stylix }@attrs: {
     # replace 'joes-desktop' with your hostname here.
     nixosConfigurations.iverson = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -22,16 +26,12 @@
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
     in home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
-
-      # Specify your home configuration modules here, for example,
-      # the path to your home.nix.
-      modules = [ ./home.nix ];
-
-      # Optionally use extraSpecialArgs
-      # to pass through arguments to home.nix
+      modules = [
+        stylix.homeModules.stylix
+        ./home.nix
+      ];
       extraSpecialArgs = {
-        inherit nixpkgsUnstable;
-        inherit nixpkgs;
+        inherit nixpkgsUnstable nixpkgs stylix;
       };
     };
   };
