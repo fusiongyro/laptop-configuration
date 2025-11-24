@@ -124,6 +124,7 @@
     python312
     ride
     signal-desktop
+    swww
     syncthing
     tdesktop
     thunderbird
