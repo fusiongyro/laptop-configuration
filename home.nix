@@ -62,7 +62,7 @@
   # Firefox
   programs.firefox = {
     enable = true;
-    nativeMessagingHosts = [ pkgs.gnome-browser-connector pkgs._1password ];
+    nativeMessagingHosts = [ pkgs.gnome-browser-connector pkgs._1password-cli ];
   };
 
   # Fish configuration: remove the greeting
@@ -126,7 +126,7 @@
     signal-desktop
     swww
     syncthing
-    tdesktop
+    telegram-desktop
     thunderbird
     transmission_4-gtk
     unzip

@@ -44,22 +44,15 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  # Desktop environment is Hyprland
+  programs.hyprland.enable = true;
+  
+  # Avahi
   services.avahi.enable = true;
   services.avahi.nssmdns4 = true;
 
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
+  # Currently needed only for automatic login
   services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  # services.displayManager.sddm.enable = true;
-  # services.desktopManager.plasma6.enable = true;
-
-  # Enable GNOME
-  # services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.displayManager.gdm.wayland = true;
-  # services.xserver.desktopManager.gnome.enable = true;
-  programs.hyprland.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -130,13 +123,14 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    android-file-transfer
+    docker
+    file
+    git
     helix
+    hyprpolkitagent
     restic
     virt-manager
-    git
-    file
-    docker
-    android-file-transfer
     wine64
     wineWow64Packages.full
   ];
@@ -144,7 +138,7 @@
   services.upower.enable = true;
   
   # android
-  services.udev.packages = [ pkgs.android-udev-rules ];
+  # services.udev.packages = [ pkgs.android-udev-rules ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
