@@ -22,6 +22,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
   # boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+
   # Enable networking
   networking.networkmanager.enable = true;
   networking.hostName = "iverson";
