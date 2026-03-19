@@ -110,14 +110,15 @@
   # --- PACKAGES WITHOUT HOME-MANAGER CONFIGURATION ---
   home.packages = with pkgs; [
     _7zz
+    anki
     bluez
     brightnessctl
     discord
     dyalog
     element-desktop
-    helm
-    hyprpanel
     gvfs
+    helm
+    jetbrains.idea
     mtpfs
     nixpkgsUnstable.legacyPackages.${system}.nushell
     obsidian
@@ -133,6 +134,7 @@
     wireplumber
     wl-clipboard
     wofi
+    yabridge
     zoom-us
   ] ++ [home-manager];
   

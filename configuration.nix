@@ -47,8 +47,9 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Desktop environment is Hyprland
-  programs.hyprland.enable = true;
+  # Desktop environment is GNOME
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
   
   # Avahi
   services.avahi.enable = true;
@@ -70,17 +71,25 @@
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
+  security.pam.loginLimits = [
+      { domain = "@audio"; item = "memlock"; type = "-"   ; value = "unlimited"; }
+  ];
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
+  };
+
+  services.jack = {
+    # jackd.enable = true;
+    alsa.enable = false;
+    loopback.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -105,7 +114,7 @@
     isNormalUser = true;
     shell = pkgs.fish;
     description = "Daniel Lyons";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" "input" "docker"];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" "input" "docker" "jackaudio" "audio"];
   };
 
   # 1password
@@ -130,6 +139,9 @@
     docker
     file
     git
+    gnomeExtensions.blur-my-shell
+    gnomeExtensions.just-perfection
+    gnomeExtensions.paperwm
     helix
     hyprpolkitagent
     restic
