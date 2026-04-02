@@ -111,6 +111,7 @@
   home.packages = with pkgs; [
     _7zz
     anki
+    bespokesynth
     bluez
     brightnessctl
     discord
