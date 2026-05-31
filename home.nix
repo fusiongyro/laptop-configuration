@@ -53,6 +53,8 @@
   # --- PROGRAMS ---
   # Exa and Bat
   programs.bat.enable = true;
+  programs.fd.enable = true;
+  programs.fzf.enable = true;
   programs.eza.enable = true;
   
   # Direnv
@@ -120,6 +122,7 @@
     gvfs
     helm
     jetbrains.idea
+    lazygit
     mtpfs
     nixpkgsUnstable.legacyPackages.${system}.nushell
     obsidian

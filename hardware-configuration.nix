@@ -12,6 +12,9 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  boot.extraModprobeConfig = ''
+      options snd_seq_midi output_buffer_size=131072
+    '';
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/2501b72f-57a0-4070-b3fa-0de45eed4833";
