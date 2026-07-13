@@ -1,20 +1,19 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgsUnstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    stylix = {
-      url = "github:nix-community/stylix/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    kage.url = "github:fusiongyro/kage";
+    kage.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixpkgsUnstable, home-manager, nixos-hardware, stylix }@attrs: {
+  outputs = { self, nixpkgs, nixpkgsUnstable, home-manager, nixos-hardware, kage }@attrs:
+  let system = "x86_64-linux"; in {
     # replace 'joes-desktop' with your hostname here.
     nixosConfigurations.iverson = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+      inherit system;
       specialArgs = attrs;
       modules = [ 
         ./configuration.nix
@@ -27,11 +26,11 @@
     in home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       modules = [
-        stylix.homeModules.stylix
         ./home.nix
       ];
       extraSpecialArgs = {
-        inherit nixpkgsUnstable nixpkgs stylix;
+        inherit nixpkgsUnstable nixpkgs;
+        kage = kage.packages.${system};
       };
     };
   };

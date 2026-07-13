@@ -1,17 +1,10 @@
-{ nixpkgs, pkgs, nixpkgsUnstable, stylix, ... }:
+{ nixpkgs, pkgs, nixpkgsUnstable, config, kage, ... }:
 {
   home.stateVersion = "23.11";
   
   # important settings
   home.username = "dlyons";
   home.homeDirectory = "/home/dlyons";
-
-  # style settings
-  # stylix.enable = true;
-  # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
-  # # stylix.fonts.monospace.name = "PragmataPro Mono Liga";
-  # stylix.fonts.monospace.name = "Berkeley Mono";
-  # stylix.targets.firefox.profileNames = ["default"];
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.dyalog.acceptLicense = true;
@@ -52,6 +45,7 @@
 
   # --- PROGRAMS ---
   # Exa and Bat
+  programs.aria2.enable = true;
   programs.bat.enable = true;
   programs.fd.enable = true;
   programs.fzf.enable = true;
@@ -59,17 +53,21 @@
   
   # Direnv
   programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
+  programs.direnv.silent = true;
   
   # Firefox
   programs.firefox = {
     enable = true;
     nativeMessagingHosts = [ pkgs.gnome-browser-connector pkgs._1password-cli ];
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
   };
 
   # Fish configuration: remove the greeting
   programs.fish.enable = true;
   programs.fish.shellInit = "set -g fish_greeting";
+
+  programs.ghostty.enable = true;
+  programs.ghostty.systemd.enable = true;
   
   # Helix. Add my keybindings.
   programs.helix = {
@@ -116,6 +114,7 @@
     bespokesynth
     bluez
     brightnessctl
+    calibre
     discord
     dyalog
     element-desktop
@@ -140,7 +139,7 @@
     wofi
     yabridge
     zoom-us
-  ] ++ [home-manager];
+  ] ++ [home-manager kage.default];
   
   # --- SERVICES -- 
   # Syncthing

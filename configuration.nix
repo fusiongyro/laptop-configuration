@@ -136,6 +136,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     android-file-transfer
+    android-tools
     docker
     file
     git
