@@ -24,7 +24,7 @@
     IdentitiesOnly yes
 
   Host *
-    IdentityAgent ~/.1password/agent.sock
+    IdentityAgent ~/.bitwarden-ssh-agent.sock
     ControlMaster auto
     ControlPath ~/.ssh/master-%r@%h:%p
 
@@ -58,7 +58,7 @@
   # Firefox
   programs.firefox = {
     enable = true;
-    nativeMessagingHosts = [ pkgs.gnome-browser-connector pkgs._1password-cli ];
+    nativeMessagingHosts = [ pkgs.gnome-browser-connector ];
     configPath = "${config.xdg.configHome}/mozilla/firefox";
   };
 
@@ -112,6 +112,7 @@
     _7zz
     anki
     bespokesynth
+    bitwarden-desktop
     bluez
     brightnessctl
     calibre

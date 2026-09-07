@@ -117,13 +117,6 @@
     extraGroups = [ "networkmanager" "wheel" "libvirtd" "input" "docker" "jackaudio" "audio"];
   };
 
-  # 1password
-  programs._1password.enable = true;
-  programs._1password-gui = {
-    enable = true;
-    polkitPolicyOwners = ["dlyons"];
-  };
-    
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
