@@ -7,9 +7,11 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     kage.url = "github:fusiongyro/kage";
     kage.inputs.nixpkgs.follows = "nixpkgs";
+    stylix.url = "github:nix-community/stylix/release-26.05";
+    stylix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixpkgsUnstable, home-manager, nixos-hardware, kage }@attrs:
+  outputs = { self, nixpkgs, nixpkgsUnstable, home-manager, nixos-hardware, kage, stylix }@attrs:
   let system = "x86_64-linux"; in {
     # replace 'joes-desktop' with your hostname here.
     nixosConfigurations.iverson = nixpkgs.lib.nixosSystem {
@@ -18,6 +20,7 @@
       modules = [ 
         ./configuration.nix
         nixos-hardware.nixosModules.framework-13-7040-amd
+        stylix.nixosModules.stylix
       ];
     };
     
@@ -27,6 +30,7 @@
       inherit pkgs;
       modules = [
         ./home.nix
+        stylix.homeModules.stylix
       ];
       extraSpecialArgs = {
         inherit nixpkgsUnstable nixpkgs;

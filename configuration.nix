@@ -7,6 +7,7 @@
   pkgs, 
   nixpkgsUnstable,
   home-manager,
+  stylix,
   ... 
 }:
 
@@ -16,6 +17,15 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
+
+  # Stylix
+  stylix.enable = true;
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
+  stylix.fonts.monospace = {
+    package = pkgs.victor-mono;
+    name = "Victor Mono";
+  };
+  stylix.fonts.sizes.terminal = 14;
     
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

@@ -1,4 +1,4 @@
-{ nixpkgs, pkgs, nixpkgsUnstable, config, kage, ... }:
+{ nixpkgs, pkgs, nixpkgsUnstable, config, kage, stylix, ... }:
 {
   home.stateVersion = "23.11";
   
@@ -9,6 +9,15 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.dyalog.acceptLicense = true;
   
+  stylix.enable = true;
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
+  stylix.fonts.monospace = {
+    package = pkgs.victor-mono;
+    name = "Victor Mono";
+  };
+  stylix.fonts.sizes.terminal = 14;
+  stylix.targets.firefox.profileNames = ["m8hth7ie.default"];
+
   # My mail signature
   home.file.".signature".text = ''
   --
@@ -87,16 +96,12 @@
       "C-n" = "extend_line_down";
       "C-p" = "extend_line_up";
     };
-    settings.theme = "rose_pine";
   };
 
   # Kitty
   programs.kitty = {
     enable = true;
-    font.name = "Berkeley Mono";
-    font.size = 14;
     shellIntegration.enableFishIntegration = true;
-    themeFile = "rose-pine";
   };
 
   programs.nix-index.enable = true;
@@ -139,6 +144,7 @@
     wl-clipboard
     wofi
     yabridge
+    yubikey-manager
     zoom-us
   ] ++ [home-manager kage.default];
   
