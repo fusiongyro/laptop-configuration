@@ -20,26 +20,37 @@
     ls = "eza";
   };
 
-  # --- PROGRAMS ---
-  # Exa and Bat
   programs.aria2.enable = true;
   programs.bat.enable = true;
-  programs.fd.enable = true;
-  programs.fzf.enable = true;
-  programs.eza.enable = true;
-
-  # Direnv
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+  };
   programs.direnv.enable = true;
   programs.direnv.silent = true;
-
-  # Firefox
+  programs.eza.enable = true;
+  programs.fd.enable = true;
   programs.firefox.enable = true;
-
-  # Fish configuration: remove the greeting
   programs.fish.enable = true;
   programs.fish.shellInit = "set -g fish_greeting";
-
-  # Helix. Add my keybindings.
+  programs.fzf.enable = true;
+  programs.git = {
+    enable = true;
+    settings = {
+      core = {
+        autocrlf = "input";
+      };
+      pull = {
+        rebase = true;
+      };
+      init = {
+        defaultBranch = "main";
+      };
+      delta = {
+        navigate = true;
+      };
+    };
+  };
   programs.helix = {
     enable = true;
     settings.keys.normal = {
@@ -59,19 +70,39 @@
     };
   };
   programs.home-manager.enable = true;
-
-  # Kitty
   programs.kitty = {
     enable = true;
     shellIntegration.enableFishIntegration = true;
+    settings = {
+      shell = "${pkgs.fish}/bin/fish";
+      enable_audio_bell = "no";
+
+      tab_bar_style = "powerline";
+      tab_powerline_style = "round";
+
+      notify_on_cmd_finish = "unfocused";
+    };
   };
-
+  programs.lazygit = {
+    enable = true;
+    settings = {
+      refresher.fetchInterval = 150;
+    };
+  };
+  programs.mergiraf.enable = true;
+  programs.mergiraf.enableGitIntegration = true;
   programs.nix-index.enable = true;
-
-  # Starship. Make sure it hooks up to Fish
+  programs.obsidian.enable = true;
+  programs.pandoc.enable = true;
+  programs.pgcli.enable = true;
+  programs.sioyek.enable = true;
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
+  };
+  programs.yazi = {
+    enable = true;
+    shellWrapperName = "y";
   };
 
   # --- PACKAGES WITHOUT HOME-MANAGER CONFIGURATION ---
@@ -79,20 +110,48 @@
     with pkgs;
     [
       _7zz
+      ack
       bitwarden-desktop
       calibre
       discord
+      duckdb
+      ffmpeg
+      git-absorb
+      gitlab-ci-local
+      gnused
+      graphviz
+      hyperfine
+      imagemagick
       jetbrains.idea
       lazygit
+      moreutils
       obsidian
       nil
       nixfmt
+      pv
+      sqlite
+      swi-prolog
+      tree
       unzip
+      wget
+      xz
       yubikey-manager
     ]
     ++ [ kage.default ];
 
   # --- SERVICES --
-  # Syncthing
+  services.hister = {
+    enable = true;
+    settings = {
+      app = {
+        search_url = "https://kagi.com/search?q={query}";
+        log_level = "info";
+      };
+      server = {
+        address = "127.0.0.1:4433";
+        database = "db.sqlite3";
+      };
+    };
+  };
   services.syncthing.enable = true;
 }

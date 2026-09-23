@@ -9,6 +9,8 @@
     kage.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:nix-community/stylix/release-26.05";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
+    hister.url = "github:asciimoo/hister";
+    hister.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -20,6 +22,7 @@
       nixos-hardware,
       kage,
       stylix,
+      hister,
     }@attrs:
     let
       system = "x86_64-linux";
@@ -46,6 +49,7 @@
             ./home-generic.nix
             ./home.nix
             stylix.homeModules.stylix
+            hister.homeModules.default
           ];
           extraSpecialArgs = {
             inherit nixpkgsUnstable nixpkgs;
