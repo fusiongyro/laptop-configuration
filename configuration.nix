@@ -2,21 +2,20 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ 
-  config, 
-  pkgs, 
+{
+  config,
+  pkgs,
   nixpkgsUnstable,
   home-manager,
   stylix,
-  ... 
+  ...
 }:
 
 {
-  imports =
-    [ 
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Stylix
   stylix.enable = true;
@@ -26,7 +25,7 @@
     name = "Victor Mono";
   };
   stylix.fonts.sizes.terminal = 14;
-    
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -60,7 +59,7 @@
   # Desktop environment is GNOME
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
-  
+
   # Avahi
   services.avahi.enable = true;
   services.avahi.nssmdns4 = true;
@@ -82,7 +81,12 @@
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   security.pam.loginLimits = [
-      { domain = "@audio"; item = "memlock"; type = "-"   ; value = "unlimited"; }
+    {
+      domain = "@audio";
+      item = "memlock";
+      type = "-";
+      value = "unlimited";
+    }
   ];
   services.pipewire = {
     enable = true;
@@ -124,7 +128,15 @@
     isNormalUser = true;
     shell = pkgs.fish;
     description = "Daniel Lyons";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" "input" "docker" "jackaudio" "audio"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "libvirtd"
+      "input"
+      "docker"
+      "jackaudio"
+      "audio"
+    ];
   };
 
   # Allow unfree packages
@@ -155,7 +167,7 @@
   ];
 
   services.upower.enable = true;
-  
+
   # android
   # services.udev.packages = [ pkgs.android-udev-rules ];
 
@@ -166,7 +178,7 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-  
+
   # Needed to configure enable the other fish shell integrations
   programs.fish.enable = true;
 
