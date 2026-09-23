@@ -28,7 +28,6 @@
       system = "x86_64-linux";
     in
     {
-      # replace 'joes-desktop' with your hostname here.
       nixosConfigurations.iverson = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = attrs;
@@ -39,22 +38,29 @@
         ];
       };
 
-      homeConfigurations."dlyons" =
+      homeConfigurations =
         let
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          buildHome = (
+            path:
+            home-manager.lib.homeManagerConfiguration {
+              inherit pkgs;
+              modules = [
+                ./home-generic.nix
+                path
+                stylix.homeModules.stylix
+                hister.homeModules.default
+              ];
+              extraSpecialArgs = {
+                inherit nixpkgsUnstable nixpkgs;
+                kage = kage.packages.${system};
+              };
+            }
+          );
         in
-        home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [
-            ./home-generic.nix
-            ./home.nix
-            stylix.homeModules.stylix
-            hister.homeModules.default
-          ];
-          extraSpecialArgs = {
-            inherit nixpkgsUnstable nixpkgs;
-            kage = kage.packages.${system};
-          };
+        {
+          corkis = buildHome ./corkis.nix;
+          iverson = buildHome ./iverson.nix;
         };
     };
 }
