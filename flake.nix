@@ -40,27 +40,29 @@
 
       homeConfigurations =
         let
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
           buildHome = (
-            path:
-            home-manager.lib.homeManagerConfiguration {
-              inherit pkgs;
-              modules = [
-                ./home-generic.nix
-                path
-                stylix.homeModules.stylix
-                hister.homeModules.default
-              ];
-              extraSpecialArgs = {
-                inherit nixpkgsUnstable nixpkgs;
-                kage = kage.packages.${system};
-              };
-            }
+            path: arch:
+            let
+              pkgs = nixpkgs.legacyPackages.${arch};
+            in 
+              home-manager.lib.homeManagerConfiguration {
+                inherit pkgs;
+                modules = [
+                  ./home-generic.nix
+                  path
+                  stylix.homeModules.stylix
+                  hister.homeModules.default
+                ];
+                extraSpecialArgs = {
+                  inherit nixpkgsUnstable nixpkgs;
+                  kage = kage.packages.${arch};
+                };
+              }
           );
         in
         {
-          corkis = buildHome ./corkis.nix;
-          iverson = buildHome ./iverson.nix;
+          corkis = buildHome ./corkis.nix "aarch64-darwin";
+          iverson = buildHome ./iverson.nix "x86_64-linux";
         };
     };
 }

@@ -1,43 +1,43 @@
 {
-  config,
+  nixpkgs,
+  nixpkgsUnstable,
   pkgs,
-  pkgsUnstable,
+  config,
   kage,
   stylix,
   ...
 }:
 {
 
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
+  # Home Manager needs a bit of information about you and the paths it should manage.
   home.username = "dlyons";
   home.homeDirectory = "/Users/dlyons";
 
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-soft.yaml";
+  stylix.fonts.monospace = {
+    package = pkgs.victor-mono;
+    name = "Victor Mono";
+  };
+  stylix.fonts.sizes.terminal = 16;
+  stylix.targets.firefox.profileNames = [ "1bo2ckd5.default-esr" ];
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
   home.packages =
     with pkgs;
     [
+      docker
       maven
       tesseract
     ]
-    ++ (with pkgsUnstable; [
+    ++ (with nixpkgsUnstable; [
       pyrefly
       ty
     ]);
 
-  # Git configuration
   programs.git = {
     settings = {
       user.name = "Daniel K Lyons";
       user.email = "dlyons@nrao.edu";
     };
-  };
-
-  home.sessionVariables = {
-    # environment variables go here
   };
 
   programs.kitty = {

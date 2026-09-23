@@ -8,6 +8,10 @@
   ...
 }:
 {
+  home.stateVersion = "23.11";
+
+  nixpkgs.config.allowUnfree = true;
+
   stylix.enable = true;
 
   home.sessionVariables = {
@@ -31,6 +35,7 @@
   programs.eza.enable = true;
   programs.fd.enable = true;
   programs.firefox.enable = true;
+  programs.firefox.configPath = "${config.xdg.configHome}/mozilla/firefox";
   programs.fish.enable = true;
   programs.fish.shellInit = "set -g fish_greeting";
   programs.fzf.enable = true;
@@ -112,7 +117,7 @@
       _7zz
       ack
       bitwarden-desktop
-      calibre
+      bulletty
       discord
       duckdb
       ffmpeg
@@ -125,7 +130,6 @@
       jetbrains.idea
       lazygit
       moreutils
-      obsidian
       nil
       nixfmt
       pv

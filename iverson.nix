@@ -8,13 +8,10 @@
   ...
 }:
 {
-  home.stateVersion = "23.11";
-
   # important settings
   home.username = "dlyons";
   home.homeDirectory = "/home/dlyons";
 
-  nixpkgs.config.allowUnfree = true;
   nixpkgs.config.dyalog.acceptLicense = true;
 
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
@@ -48,6 +45,7 @@
       User fusion
   '';
 
+  programs.calibre.enable = true;
   # Firefox
   programs.firefox = {
     nativeMessagingHosts = [ pkgs.gnome-browser-connector ];
