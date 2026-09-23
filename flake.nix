@@ -29,6 +29,7 @@
     in home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       modules = [
+        ./home-generic.nix
         ./home.nix
         stylix.homeModules.stylix
       ];
