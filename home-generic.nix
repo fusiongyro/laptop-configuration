@@ -93,7 +93,7 @@
   programs.lazygit = {
     enable = true;
     enableFishIntegration = true;
-    settings = {
+    settings.git = {
       autoFetch = false;
       autoRefresh = false;
     };
