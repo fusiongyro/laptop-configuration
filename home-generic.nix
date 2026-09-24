@@ -10,6 +10,8 @@
 {
   home.stateVersion = "23.11";
 
+  wayland.windowManager.hyprland.configType = "lua";
+
   nixpkgs.config.allowUnfree = true;
 
   stylix.enable = true;
@@ -90,8 +92,10 @@
   };
   programs.lazygit = {
     enable = true;
+    enableFishIntegration = true;
     settings = {
-      refresher.fetchInterval = 150;
+      autoFetch = false;
+      autoRefresh = false;
     };
   };
   programs.mergiraf.enable = true;
@@ -120,6 +124,7 @@
       bulletty
       discord
       duckdb
+      elinks
       ffmpeg
       git-absorb
       gitlab-ci-local
@@ -128,7 +133,6 @@
       hyperfine
       imagemagick
       jetbrains.idea
-      lazygit
       moreutils
       nil
       nixfmt
