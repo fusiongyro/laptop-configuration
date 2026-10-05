@@ -13,7 +13,8 @@
   home.username = "dlyons";
   home.homeDirectory = "/Users/dlyons";
 
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-soft.yaml";
+  # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-soft.yaml";
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-moon.yaml";
   stylix.fonts.monospace = {
     package = pkgs.victor-mono;
     name = "Victor Mono";
