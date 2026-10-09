@@ -11,6 +11,8 @@
     stylix.inputs.nixpkgs.follows = "nixpkgs";
     hister.url = "github:asciimoo/hister";
     hister.inputs.nixpkgs.follows = "nixpkgs";
+    firefox-addons.url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+    firefox-addons.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -23,6 +25,7 @@
       kage,
       stylix,
       hister,
+      firefox-addons,
     }@attrs:
     let
       system = "x86_64-linux";
@@ -54,7 +57,7 @@
                   hister.homeModules.default
                 ];
                 extraSpecialArgs = {
-                  inherit nixpkgsUnstable nixpkgs;
+                  inherit nixpkgsUnstable nixpkgs firefox-addons;
                   kage = kage.packages.${arch};
                 };
               }

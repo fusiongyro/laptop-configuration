@@ -22,25 +22,21 @@
 
   # Bat shell alias
   home.shellAliases = {
-    cat = "bat";
-    ls = "eza";
+    ls = "lla";
   };
 
-  programs.aria2.enable = true;
-  programs.bat.enable = true;
-  programs.delta = {
+  programs.alacritty = {
     enable = true;
-    enableGitIntegration = true;
+    settings = {
+      window.option_as_alt = "Both";
+    };
   };
+  programs.aria2.enable = true;
   programs.direnv.enable = true;
   programs.direnv.silent = true;
-  programs.eza.enable = true;
-  programs.fd.enable = true;
+  programs.emacs.enable = true;
   programs.firefox.enable = true;
-  programs.firefox.configPath = "${config.xdg.configHome}/mozilla/firefox";
   programs.fish.enable = true;
-  programs.fish.shellInit = "set -g fish_greeting";
-  programs.fzf.enable = true;
   programs.git = {
     enable = true;
     settings = {
@@ -77,19 +73,6 @@
     };
   };
   programs.home-manager.enable = true;
-  programs.kitty = {
-    enable = true;
-    shellIntegration.enableFishIntegration = true;
-    settings = {
-      shell = "${pkgs.fish}/bin/fish";
-      enable_audio_bell = "no";
-
-      tab_bar_style = "powerline";
-      tab_powerline_style = "round";
-
-      notify_on_cmd_finish = "unfocused";
-    };
-  };
   programs.lazygit = {
     enable = true;
     enableFishIntegration = true;
@@ -109,10 +92,6 @@
     enable = true;
     enableFishIntegration = true;
   };
-  programs.yazi = {
-    enable = true;
-    shellWrapperName = "y";
-  };
 
   # --- PACKAGES WITHOUT HOME-MANAGER CONFIGURATION ---
   home.packages =
@@ -126,6 +105,7 @@
       duckdb
       elinks
       ffmpeg
+      fzy
       git-absorb
       gitlab-ci-local
       gnused
@@ -133,6 +113,7 @@
       hyperfine
       imagemagick
       jetbrains.idea
+      lla
       moreutils
       nil
       nixfmt
