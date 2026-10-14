@@ -20,11 +20,6 @@
     EDITOR = "hx";
   };
 
-  # Bat shell alias
-  home.shellAliases = {
-    ls = "lla";
-  };
-
   programs.alacritty = {
     enable = true;
     settings = {
@@ -38,24 +33,45 @@
     enable = true;
     extraPackages =
       epkgs: with epkgs; [
-        avy
         apheleia
+        avy
+        cape
+        company
         consult
         corfu
+        counsel
         direnv
         eglot-booster
         embark
+        embark-consult
+        flx-ido
+        flycheck
+        flycheck-eglot
         flymake-pyrefly
-        hl-todo
+        forge
+        geiser
         guru-mode
+        haskell-mode
+        helm
+        hl-todo
+        ivy
+        key-chord
+        lsp-mode
+        lsp-ui
         magit
+        marginalia
         mu4e
         multiple-cursors
         nix-mode
+        orderless
+        rainbow-delimiters
+        rainbow-mode
+        swiper
         tree-sitter
         tree-sitter-langs
         vertico
         vterm
+        web-mode
       ];
   };
   programs.firefox.enable = true;
@@ -135,8 +151,8 @@
       graphviz
       hyperfine
       imagemagick
+      isync
       jetbrains.idea
-      lla
       moreutils
       nil
       nixfmt

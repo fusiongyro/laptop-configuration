@@ -27,8 +27,10 @@
   home.packages =
     with pkgs;
     [
+      coreutils-prefixed
       docker
       maven
+      isync
       tesseract
     ]
     ++ (with nixpkgsUnstable; [
@@ -38,9 +40,11 @@
 
   programs.firefox.configPath = "Library/Application Support/org.nixos.firefox";
   programs.firefox.profiles.${firefoxProfile}.extensions.packages = with firefox-addons.packages.${pkgs.system}; [
+    angular-devtools
     bitwarden
-    ublock-origin
     kagi-search
+    ublock-origin
+    web-clipper-obsidian
   ];
 
   programs.git = {
