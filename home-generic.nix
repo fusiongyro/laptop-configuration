@@ -34,7 +34,30 @@
   programs.aria2.enable = true;
   programs.direnv.enable = true;
   programs.direnv.silent = true;
-  programs.emacs.enable = true;
+  programs.emacs = {
+    enable = true;
+    extraPackages =
+      epkgs: with epkgs; [
+        avy
+        apheleia
+        consult
+        corfu
+        direnv
+        eglot-booster
+        embark
+        flymake-pyrefly
+        hl-todo
+        guru-mode
+        magit
+        mu4e
+        multiple-cursors
+        nix-mode
+        tree-sitter
+        tree-sitter-langs
+        vertico
+        vterm
+      ];
+  };
   programs.firefox.enable = true;
   programs.fish.enable = true;
   programs.git = {

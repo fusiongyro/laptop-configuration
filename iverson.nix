@@ -57,7 +57,13 @@
     anki
     bluez
     brightnessctl
+    cmake
+    decker
+    gnumake
+    guile
+    isync
     mtpfs
+    mu
     thunderbird
     transmission_4-gtk
     wireplumber
