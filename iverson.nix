@@ -48,6 +48,7 @@
   programs.calibre.enable = true;
   # Firefox
   programs.firefox = {
+    enable = true;
     nativeMessagingHosts = [ pkgs.gnome-browser-connector ];
     configPath = "${config.xdg.configHome}/mozilla/firefox";
   };

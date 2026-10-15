@@ -17,7 +17,7 @@
   stylix.enable = true;
 
   home.sessionVariables = {
-    EDITOR = "hx";
+    EDITOR = "emacsclient";
   };
 
   programs.alacritty = {
@@ -74,7 +74,6 @@
         web-mode
       ];
   };
-  programs.firefox.enable = true;
   programs.fish.enable = true;
   programs.git = {
     enable = true;
@@ -93,33 +92,7 @@
       };
     };
   };
-  programs.helix = {
-    enable = true;
-    settings.keys.normal = {
-      "A-v" = "page_up";
-      "C-b" = "move_char_left";
-      "C-f" = "move_char_right";
-      "C-n" = "move_line_down";
-      "C-p" = "move_line_up";
-      "C-v" = "page_down";
-    };
-
-    settings.keys.select = {
-      "C-b" = "extend_char_left";
-      "C-f" = "extend_char_right";
-      "C-n" = "extend_line_down";
-      "C-p" = "extend_line_up";
-    };
-  };
   programs.home-manager.enable = true;
-  programs.lazygit = {
-    enable = true;
-    enableFishIntegration = true;
-    settings.git = {
-      autoFetch = false;
-      autoRefresh = false;
-    };
-  };
   programs.mergiraf.enable = true;
   programs.mergiraf.enableGitIntegration = true;
   programs.nix-index.enable = true;
